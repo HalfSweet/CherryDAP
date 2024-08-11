@@ -11,7 +11,7 @@ on:
       - 'projects/hpm5301evklite/**'
 
   workflow_dispatch:
-    
+
 
 
 jobs:
@@ -41,8 +41,6 @@ jobs:
           source ~/HPM_PYTHON/bin/activate
           pip install pyyaml jinja2
 
-      - uses: mxschmitt/action-tmate@v3
-          
       - name: Build bootloader
         run: |
           cd projects/hpm5301evklite/bootloader
@@ -59,3 +57,20 @@ jobs:
         with:
           name: bootloader
           path: projects/hpm5301evklite/bootloader/build/output/demo.bin
+
+      - name: Build APP
+        run: |
+          cd projects/hpm5301evklite/app
+          export HPM_SDK_BASE=~/sdk_env/hpm_sdk
+          export GNURISCV_TOOLCHAIN_PATH=~/risv32-unknown-elf
+          export HPM_SDK_TOOLCHAIN_VARIANT=gcc
+          export PYTHON_EXECUTABLE=~/HPM_PYTHON/bin/python3
+
+          cmake -GNinja -DBOARD=hpm5301evklite -DHPM_BUILD_TYPE=flash_xip -DCMAKE_BUILD_TYPE=release -Dpython_exec="~/HPM_PYTHON/bin/python3" -DRV_ARCH="rv32imac_zicsr_zifencei" -DCONFIG_HSLINK_PRO_EXPANSION=ON -DCONFIG_SWDIO_DIR=IOC_PAD_PA30 . -B=./build
+          cmake --build ./build
+
+      - name: Upload APP
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: projects/hpm5301evklite/build/output/CherryDAP.uf2
