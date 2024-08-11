@@ -21,9 +21,6 @@ jobs:
 
       - uses: gregdavill/setup-riscv-gnu-toolchain@v2.0
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-      
       # 创建riscv-none-elf-到riscv32-unknown-elf-的软链接
       - name: Create riscv-none-elf- to riscv32-unknown-elf- symlink
         run: |
