@@ -19,7 +19,7 @@ jobs:
         with:
           submodules: true
 
-      - uses: gregdavill/setup-riscv-gnu-toolchain@v2
+      - uses: gregdavill/setup-riscv-gnu-toolchain
 
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
