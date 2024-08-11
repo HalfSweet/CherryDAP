@@ -10,6 +10,9 @@ on:
       - '.github/workflows/HPM-build.yml'
       - 'projects/hpm5301evklite/**'
 
+  workflow_dispatch:
+    
+
 jobs:
   build:
     runs-on: ubuntu-latest
