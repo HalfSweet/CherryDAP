@@ -2,7 +2,7 @@
 
 cd /home/runner/work/_temp/.setup-riscv-gnu-toolchain/bin/
 
-new_path="~/risv32-unknown-elf/bin"
+new_path="/home/runner/risv32-unknown-elf/bin"
 mkdir -p $new_path
 
 # 查找所有以 "riscv-none-elf-" 开头的文件
