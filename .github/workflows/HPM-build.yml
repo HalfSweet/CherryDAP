@@ -1,0 +1,30 @@
+name: HPM Build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/HPM-build.yml'
+      - 'projects/hpm5301evklite/**'
+  pull_request:
+    paths:
+      - '.github/workflows/HPM-build.yml'
+      - 'projects/hpm5301evklite/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: gregdavill/setup-riscv-gnu-toolchain@v2
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      
+      # # 创建riscv-none-elf-到riscv32-unknown-elf-的软链接
+      # - name: Create riscv-none-elf- to riscv32-unknown-elf- symlink
+      #   run: |
+      #     sudo ln -s /opt/riscv-none-elf- /opt/riscv32-unknown-elf-
