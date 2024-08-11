@@ -62,7 +62,7 @@ jobs:
 
       - name: Build APP
         run: |
-          cd projects/hpm5301evklite/app
+          cd projects/hpm5301evklite
           export HPM_SDK_BASE=~/sdk_env/hpm_sdk
           export GNURISCV_TOOLCHAIN_PATH=~/risv32-unknown-elf
           export HPM_SDK_TOOLCHAIN_VARIANT=gcc
