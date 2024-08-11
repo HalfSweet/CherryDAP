@@ -14,5 +14,7 @@ for file in riscv-none-elf-*; do
         
         # 创建软链接
         ln -s "$file" "$new_link"
+
+        printf "Create symlink: %s -> %s\n" "$new_link" "$file"
     fi
 done
