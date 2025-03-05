@@ -12,8 +12,8 @@ HSLink_Setting_t HSLink_Setting = {
     .jtag_port_mode = PORT_MODE_SPI,
     .power = {
         .voltage = 3.3,
-        .power_on = false,
-        .port_on = false,
+        .power_on = true,
+        .port_on = true,
     },
     .reset = RESET_NRST,
     .led = false,
